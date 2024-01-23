@@ -1,9 +1,11 @@
 import 'package:bloc/bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:user_articles/app/core/enums.dart';
 import 'package:user_articles/domain/models/details_model.dart';
 import 'package:user_articles/domain/repositories/details_repository.dart';
 
+part 'details_cubit.freezed.dart';
 part 'details_state.dart';
 
 @injectable

@@ -1,13 +1,10 @@
 part of 'details_cubit.dart';
 
-class DetailsState {
-  DetailsState({
-    this.results = const [],
-    this.status = Status.initial,
-    this.errorMessage,
-  });
-
-  final List<DetailsModel> results;
-  final Status status;
-  final String? errorMessage;
+@freezed
+class DetailsState with _$DetailsState {
+  factory DetailsState({
+    @Default([]) List<DetailsModel> results,
+    @Default(Status.initial) Status status,
+    String? errorMessage,
+  }) = _DetailsState;
 }
