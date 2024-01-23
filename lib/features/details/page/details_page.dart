@@ -3,40 +3,32 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_articles/app/core/enums.dart';
 import 'package:user_articles/app/injection_container.dart';
 import 'package:user_articles/domain/models/article_model.dart';
-import 'package:user_articles/domain/models/author_model.dart';
-import 'package:user_articles/features/articles/cubit/articles_cubit.dart';
-import 'package:user_articles/features/details/page/details_page.dart';
+import 'package:user_articles/domain/models/details_model.dart';
+import 'package:user_articles/features/details/cubit/details_cubit.dart';
 
-class ArticlesPage extends StatelessWidget {
-  const ArticlesPage({
+class DetailsPage extends StatelessWidget {
+  const DetailsPage({
     Key? key,
-    required this.author,
+    required this.id,
   }) : super(key: key);
 
-  final AuthorModel author;
+  final ArticleModel id;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(author.name),
+        title: const Text(''),
       ),
-      body: BlocProvider<ArticlesCubit>(
+      body: BlocProvider<DetailsCubit>(
         create: (context) => getIt()
           ..fetchData(
-            authorId: author.id,
+            id: id.id,
           ),
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20.0),
-              child: CircleAvatar(
-                backgroundImage: NetworkImage(author.picture),
-                radius: 50,
-              ),
-            ),
             Expanded(
-              child: BlocBuilder<ArticlesCubit, ArticlesState>(
+              child: BlocBuilder<DetailsCubit, DetailsState>(
                 builder: (context, state) {
                   switch (state.status) {
                     case Status.initial:
@@ -50,14 +42,14 @@ class ArticlesPage extends StatelessWidget {
                     case Status.success:
                       if (state.results.isEmpty) {
                         return const Center(
-                          child: Text('No articles found'),
+                          child: Text('No Details found'),
                         );
                       }
                       return ListView(
                         children: [
-                          for (final author in state.results)
-                            _ArticleItemWidget(
-                              model: author,
+                          for (final id in state.results)
+                            _DetailsItemWidget(
+                              model: id,
                             ),
                         ],
                       );
@@ -81,13 +73,13 @@ class ArticlesPage extends StatelessWidget {
   }
 }
 
-class _ArticleItemWidget extends StatelessWidget {
-  const _ArticleItemWidget({
+class _DetailsItemWidget extends StatelessWidget {
+  const _DetailsItemWidget({
     Key? key,
     required this.model,
   }) : super(key: key);
 
-  final ArticleModel model;
+  final DetailsModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -96,31 +88,19 @@ class _ArticleItemWidget extends StatelessWidget {
         horizontal: 20,
         vertical: 10,
       ),
-      child: InkWell(
-        onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (_) => DetailsPage(id: model)),
-          );
-        },
-        child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 20,
-          ),
-          color: Colors.black12,
-          child: Row(
-            children: [
-              Expanded(
-                child: Text(model.content),
-              ),
-              const SizedBox(width: 10),
-              const Icon(
-                Icons.arrow_right,
-                color: Colors.black,
-                size: 20,
-              ),
-            ],
-          ),
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 20,
+        ),
+        color: Colors.black12,
+        child: Row(
+          children: [
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(model.content),
+            ),
+          ],
         ),
       ),
     );
