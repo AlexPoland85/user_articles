@@ -12,6 +12,7 @@ class AuthorModel with _$AuthorModel {
     String picture,
     String firstName,
     String lastName,
+    String email,
   ) = _AuthorModel;
 
   String get name {

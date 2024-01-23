@@ -24,6 +24,7 @@ mixin _$AuthorModel {
   String get picture => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +38,12 @@ abstract class $AuthorModelCopyWith<$Res> {
           AuthorModel value, $Res Function(AuthorModel) then) =
       _$AuthorModelCopyWithImpl<$Res, AuthorModel>;
   @useResult
-  $Res call({int id, String picture, String firstName, String lastName});
+  $Res call(
+      {int id,
+      String picture,
+      String firstName,
+      String lastName,
+      String email});
 }
 
 /// @nodoc
@@ -57,6 +63,7 @@ class _$AuthorModelCopyWithImpl<$Res, $Val extends AuthorModel>
     Object? picture = null,
     Object? firstName = null,
     Object? lastName = null,
+    Object? email = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -75,6 +82,10 @@ class _$AuthorModelCopyWithImpl<$Res, $Val extends AuthorModel>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -87,7 +98,12 @@ abstract class _$$AuthorModelImplCopyWith<$Res>
       __$$AuthorModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String picture, String firstName, String lastName});
+  $Res call(
+      {int id,
+      String picture,
+      String firstName,
+      String lastName,
+      String email});
 }
 
 /// @nodoc
@@ -105,6 +121,7 @@ class __$$AuthorModelImplCopyWithImpl<$Res>
     Object? picture = null,
     Object? firstName = null,
     Object? lastName = null,
+    Object? email = null,
   }) {
     return _then(_$AuthorModelImpl(
       null == id
@@ -123,6 +140,10 @@ class __$$AuthorModelImplCopyWithImpl<$Res>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String,
+      null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -130,7 +151,8 @@ class __$$AuthorModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AuthorModelImpl extends _AuthorModel {
-  _$AuthorModelImpl(this.id, this.picture, this.firstName, this.lastName)
+  _$AuthorModelImpl(
+      this.id, this.picture, this.firstName, this.lastName, this.email)
       : super._();
 
   factory _$AuthorModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -144,10 +166,12 @@ class _$AuthorModelImpl extends _AuthorModel {
   final String firstName;
   @override
   final String lastName;
+  @override
+  final String email;
 
   @override
   String toString() {
-    return 'AuthorModel(id: $id, picture: $picture, firstName: $firstName, lastName: $lastName)';
+    return 'AuthorModel(id: $id, picture: $picture, firstName: $firstName, lastName: $lastName, email: $email)';
   }
 
   @override
@@ -160,13 +184,14 @@ class _$AuthorModelImpl extends _AuthorModel {
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
-                other.lastName == lastName));
+                other.lastName == lastName) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, picture, firstName, lastName);
+      Object.hash(runtimeType, id, picture, firstName, lastName, email);
 
   @JsonKey(ignore: true)
   @override
@@ -183,8 +208,12 @@ class _$AuthorModelImpl extends _AuthorModel {
 }
 
 abstract class _AuthorModel extends AuthorModel {
-  factory _AuthorModel(final int id, final String picture,
-      final String firstName, final String lastName) = _$AuthorModelImpl;
+  factory _AuthorModel(
+      final int id,
+      final String picture,
+      final String firstName,
+      final String lastName,
+      final String email) = _$AuthorModelImpl;
   _AuthorModel._() : super._();
 
   factory _AuthorModel.fromJson(Map<String, dynamic> json) =
@@ -198,6 +227,8 @@ abstract class _AuthorModel extends AuthorModel {
   String get firstName;
   @override
   String get lastName;
+  @override
+  String get email;
   @override
   @JsonKey(ignore: true)
   _$$AuthorModelImplCopyWith<_$AuthorModelImpl> get copyWith =>

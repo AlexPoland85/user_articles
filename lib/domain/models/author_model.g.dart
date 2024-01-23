@@ -12,6 +12,7 @@ _$AuthorModelImpl _$$AuthorModelImplFromJson(Map<String, dynamic> json) =>
       json['picture'] as String,
       json['firstName'] as String,
       json['lastName'] as String,
+      json['email'] as String,
     );
 
 Map<String, dynamic> _$$AuthorModelImplToJson(_$AuthorModelImpl instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$AuthorModelImplToJson(_$AuthorModelImpl instance) =>
       'picture': instance.picture,
       'firstName': instance.firstName,
       'lastName': instance.lastName,
+      'email': instance.email,
     };
