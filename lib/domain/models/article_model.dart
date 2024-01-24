@@ -9,6 +9,7 @@ class ArticleModel with _$ArticleModel {
   factory ArticleModel(
     int id,
     int authorId,
+    String picture,
     String content,
   ) = _ArticleModel;
 

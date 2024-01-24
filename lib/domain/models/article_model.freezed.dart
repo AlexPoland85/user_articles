@@ -22,6 +22,7 @@ ArticleModel _$ArticleModelFromJson(Map<String, dynamic> json) {
 mixin _$ArticleModel {
   int get id => throw _privateConstructorUsedError;
   int get authorId => throw _privateConstructorUsedError;
+  String get picture => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +37,7 @@ abstract class $ArticleModelCopyWith<$Res> {
           ArticleModel value, $Res Function(ArticleModel) then) =
       _$ArticleModelCopyWithImpl<$Res, ArticleModel>;
   @useResult
-  $Res call({int id, int authorId, String content});
+  $Res call({int id, int authorId, String picture, String content});
 }
 
 /// @nodoc
@@ -54,6 +55,7 @@ class _$ArticleModelCopyWithImpl<$Res, $Val extends ArticleModel>
   $Res call({
     Object? id = null,
     Object? authorId = null,
+    Object? picture = null,
     Object? content = null,
   }) {
     return _then(_value.copyWith(
@@ -65,6 +67,10 @@ class _$ArticleModelCopyWithImpl<$Res, $Val extends ArticleModel>
           ? _value.authorId
           : authorId // ignore: cast_nullable_to_non_nullable
               as int,
+      picture: null == picture
+          ? _value.picture
+          : picture // ignore: cast_nullable_to_non_nullable
+              as String,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -81,7 +87,7 @@ abstract class _$$ArticleModelImplCopyWith<$Res>
       __$$ArticleModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, int authorId, String content});
+  $Res call({int id, int authorId, String picture, String content});
 }
 
 /// @nodoc
@@ -97,6 +103,7 @@ class __$$ArticleModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? authorId = null,
+    Object? picture = null,
     Object? content = null,
   }) {
     return _then(_$ArticleModelImpl(
@@ -108,6 +115,10 @@ class __$$ArticleModelImplCopyWithImpl<$Res>
           ? _value.authorId
           : authorId // ignore: cast_nullable_to_non_nullable
               as int,
+      null == picture
+          ? _value.picture
+          : picture // ignore: cast_nullable_to_non_nullable
+              as String,
       null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -120,7 +131,7 @@ class __$$ArticleModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _$ArticleModelImpl implements _ArticleModel {
-  _$ArticleModelImpl(this.id, this.authorId, this.content);
+  _$ArticleModelImpl(this.id, this.authorId, this.picture, this.content);
 
   factory _$ArticleModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ArticleModelImplFromJson(json);
@@ -130,11 +141,13 @@ class _$ArticleModelImpl implements _ArticleModel {
   @override
   final int authorId;
   @override
+  final String picture;
+  @override
   final String content;
 
   @override
   String toString() {
-    return 'ArticleModel(id: $id, authorId: $authorId, content: $content)';
+    return 'ArticleModel(id: $id, authorId: $authorId, picture: $picture, content: $content)';
   }
 
   @override
@@ -145,12 +158,13 @@ class _$ArticleModelImpl implements _ArticleModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.authorId, authorId) ||
                 other.authorId == authorId) &&
+            (identical(other.picture, picture) || other.picture == picture) &&
             (identical(other.content, content) || other.content == content));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, authorId, content);
+  int get hashCode => Object.hash(runtimeType, id, authorId, picture, content);
 
   @JsonKey(ignore: true)
   @override
@@ -167,9 +181,8 @@ class _$ArticleModelImpl implements _ArticleModel {
 }
 
 abstract class _ArticleModel implements ArticleModel {
-  factory _ArticleModel(
-          final int id, final int authorId, final String content) =
-      _$ArticleModelImpl;
+  factory _ArticleModel(final int id, final int authorId, final String picture,
+      final String content) = _$ArticleModelImpl;
 
   factory _ArticleModel.fromJson(Map<String, dynamic> json) =
       _$ArticleModelImpl.fromJson;
@@ -178,6 +191,8 @@ abstract class _ArticleModel implements ArticleModel {
   int get id;
   @override
   int get authorId;
+  @override
+  String get picture;
   @override
   String get content;
   @override
