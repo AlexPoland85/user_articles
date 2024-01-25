@@ -128,7 +128,8 @@ class __$$AuthorModelImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$AuthorModelImpl extends _AuthorModel {
   _$AuthorModelImpl(this.id, this.picture, this.firstName, this.lastName)
       : super._();

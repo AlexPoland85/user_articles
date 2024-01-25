@@ -18,7 +18,7 @@ class DetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(''),
+        title: const Text('Details'),
       ),
       body: BlocProvider<DetailsCubit>(
         create: (context) => getIt()
